@@ -1,21 +1,32 @@
 ﻿using Steering_behaviours.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Threading.Tasks;
 
 namespace Steering_behaviours.Models
 {
-    public abstract class Animal: Creature
+    public abstract class Animal : Creature
     {
         private const float Epsilon = 0.05f;
         public long Time { get; private set; }
-        public const float velocityLimit = 3;
-        public const float steeringForceLimit = 5;
+        public float VelocityLimit { get; set; }
+        public float SteeringForceLimit { get; set; }
         public Vector3 Velocity { get; set; }
         public Vector3 Acceleration { get; private set; }
+        public static Random ran = new Random();
 
+        public Animal(int health, float weight, Color color, Vector3 position, float maxSpeed, float minVelocityLimit, 
+            float steeringForceLimit) :
+            base(health, weight, color, position, maxSpeed)
+        {
+            VelocityLimit = minVelocityLimit;
+            SteeringForceLimit = steeringForceLimit;
+
+            Time = GetMils();
+        }
         private void ApplyForce(Vector3 force)
         {
             force.Divide(Weight);
@@ -31,7 +42,25 @@ namespace Steering_behaviours.Models
 
         private void ApplyForces()
         {
-            //todo: implemenation
+            double delta = (GetMils() - Time) * 0.01;
+            Time = GetMils();
+
+            Velocity.Add(Acceleration.Mult((float)delta));
+
+            if (Velocity.Magnitude() > MaxSpeed)
+            {
+                Velocity.SetMagnitude(MaxSpeed);
+            }
+            else if(Velocity.Magnitude() < Epsilon)
+            {
+                Velocity = new Vector3(0);
+                return;
+            }
+
+            Acceleration = new Vector3(0);
+            Position.Add(Velocity.Mult((float)delta));
+            //todo: !!
+            //transform.rotation = Quaternion.LookRotation(velocity);
         }
 
         private void ApplySteeringForce()
@@ -44,6 +73,8 @@ namespace Steering_behaviours.Models
             var friction = Velocity.Mult(-1).Normalize().Mult((float)0.5);
             ApplyForce(friction);                
         }
+
+        private long GetMils() => DateTimeOffset.Now.ToUnixTimeMilliseconds();
     }
 
 }
