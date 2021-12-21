@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Steering_behaviours.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace Steering_behaviours.Models
@@ -9,8 +11,16 @@ namespace Steering_behaviours.Models
     {
         private const float Epsilon = 0.05f;
         public long Time { get; private set; }
-        private float velocityLimit = 3;
-        private float steeringForceLimit = 5;
+        public const float velocityLimit = 3;
+        public const float steeringForceLimit = 5;
+        public Vector3 Velocity { get; set; }
+        public Vector3 Acceleration { get; private set; }
+
+        private void ApplyForce(Vector3 force)
+        {
+            force.Divide(Weight);
+            Acceleration = new Vector3(Acceleration.X + force.X, Acceleration.Y + force.Y, Acceleration.Z + force.Z);
+        }
         public override void Update()
         {
             ApplyFriction();
@@ -31,7 +41,8 @@ namespace Steering_behaviours.Models
 
         private void ApplyFriction()
         {
-            //todo: implemenation
+            var friction = Velocity.Mult(-1).Normalize().Mult((float)0.5);
+            ApplyForce(friction);                
         }
     }
 

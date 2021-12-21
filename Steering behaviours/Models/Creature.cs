@@ -10,9 +10,9 @@ namespace Steering_behaviours.Models
     {
         protected Position Position { get; set; }
         public int Health { get; private set; }
-        public double Weight { get; private set; }
+        public float Weight { get; private set; }
         public Color Color { get; set; }
-        public double MaxSpeed{get;private set;}
+        public float MaxSpeed{get;private set;}
 
         public bool Injure(int harm)
         {
