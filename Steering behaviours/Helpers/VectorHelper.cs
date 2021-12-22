@@ -44,5 +44,10 @@ namespace Steering_behaviours.Helpers
         {
             return new Vector3(vect.X + vect2.X, vect.Y + vect2.Y, vect.Z + vect2.Z);
         }
+
+        public static Vector3 Sub(this Vector3 vect, Vector3 vect2)
+        {
+            return new Vector3(vect.X - vect2.X, vect.Y - vect2.Y, vect.Z - vect2.Z);
+        }
     }
 }

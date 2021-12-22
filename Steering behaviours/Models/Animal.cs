@@ -65,7 +65,23 @@ namespace Steering_behaviours.Models
 
         private void ApplySteeringForce()
         {
-            //todo: implemenation
+            var providers = GetProviders();
+            var steering = new Vector3(0);
+
+            foreach(var item in providers)
+            {
+                var desiredVelocity = item.GetDesiredVelocity();
+                if (desiredVelocity != default)
+                {
+                    steering.Add(desiredVelocity.Sub(Velocity));
+                }
+            }
+
+            steering.Sub(Velocity);
+
+            SetMarnitudeIfLargerMax(steering);
+
+            ApplyForce(steering);
         }
 
         private void ApplyFriction()
@@ -75,6 +91,13 @@ namespace Steering_behaviours.Models
         }
 
         private long GetMils() => DateTimeOffset.Now.ToUnixTimeMilliseconds();
+        protected abstract List<DesiredVelocityProvider> GetProviders();
+
+        public void SetMarnitudeIfLargerMax(Vector3 vect)
+        {
+            if (vect.Magnitude() > SteeringForceLimit)
+                vect.SetMagnitude(SteeringForceLimit);
+        }
     }
 
 }
