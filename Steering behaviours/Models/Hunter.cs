@@ -31,7 +31,7 @@ namespace Steering_behaviours.Models
 
         private void ApplyMove()
         {
-            
+            throw new NotImplementedException();
         }
     }
 }
