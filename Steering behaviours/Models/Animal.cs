@@ -70,7 +70,7 @@ namespace Steering_behaviours.Models
 
             foreach(var item in providers)
             {
-                var desiredVelocity = item.GetDesiredVelocity();
+                var desiredVelocity = item.GetDesiredVelocity(this);
                 if (desiredVelocity != default)
                 {
                     steering.Add(desiredVelocity.Sub(Velocity));

@@ -9,7 +9,7 @@ namespace Steering_behaviours.Models
 {
     public abstract class Creature
     {
-        protected Vector3 Position { get; set; }
+        public Vector3 Position { get; set; }
         public int Health { get; private set; }
         public float Weight { get; private set; }
         public Color Color { get; set; }
