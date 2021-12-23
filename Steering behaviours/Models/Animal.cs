@@ -93,7 +93,7 @@ namespace Steering_behaviours.Models
             ApplyForce(friction);                
         }
 
-        private long GetMils() => DateTimeOffset.Now.ToUnixTimeMilliseconds();
+        public static long GetMils() => DateTimeOffset.Now.ToUnixTimeMilliseconds();
         protected abstract List<DesiredVelocityProvider> GetProviders();
 
         public void SetMarnitudeIfLargerMax(Vector3 vect)
