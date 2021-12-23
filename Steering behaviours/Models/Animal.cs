@@ -14,8 +14,11 @@ namespace Steering_behaviours.Models
         public long Time { get; private set; }
         public float VelocityLimit { get; set; }
         public float SteeringForceLimit { get; set; }
+        public float FleeDistanceLimit { get; private set; }
+        public float MinFleeDistance { get; private set; }
         public Vector3 Velocity { get; set; }
         public Vector3 Acceleration { get; private set; }
+
         public static Random ran = new Random();
 
         public Animal(int health, float weight, Color color, Vector3 position, float maxSpeed, float minVelocityLimit, 

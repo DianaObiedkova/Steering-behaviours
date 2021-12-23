@@ -9,9 +9,17 @@ namespace Steering_behaviours.Models.Behaviours
 {
     public class Wander : DesiredVelocityProvider
     {
-        public override Vector3 GetDesiredVelocity()
+        private readonly float circleDistance = 1;
+        private readonly float circleRadius = 2;
+        private readonly int angleChangeStep = 15;
+        private int angle = 0;
+        public Wander(Vector3 position) : base(position) { }
+        public override Vector3 GetDesiredVelocity(Animal an)
         {
-            throw new NotImplementedException();
+            angle += Animal.ran.Next(0, 2) < 1 ? angleChangeStep : -angleChangeStep;
+            var futurePosition = an.Position.Add(an.Velocity.Normalize().Mult(circleDistance));
+            var vector = new Vector3((float)Math.Cos(angle * Math.PI / 180), 0, (float)Math.Sin(angle * Math.PI / 180)*circleRadius);
+            return futurePosition.Add(vector).Sub(an.Position).Normalize().Mult(an.VelocityLimit);
         }
     }
 }
