@@ -17,17 +17,17 @@ namespace Steering_behaviours.Models
         }
         protected override List<DesiredVelocityProvider> GetProviders()
         {
-            var providers = new List<DesiredVelocityProvider>();
+            var providers = new List<DesiredVelocityProvider>
+            {
+                new Wander(Position),
+                new AvoidEdges(new Vector3(Position.X, Field.precipiceLength, 0)),
+                new AvoidEdges(new Vector3(Field.precipiceLength + Field.Width, Position.Y, 0)),
+                new AvoidEdges(new Vector3(Field.precipiceLength, Field.precipiceLength + Field.Height, 0)),
+                new AvoidEdges(new Vector3(Field.precipiceLength, Field.precipiceLength, 0))
+            };
 
-            providers.Add(new Wander(Position));
 
-            providers.Add(new AvoidEdges(new Vector3(Position.X, Field.precipiceLength,0)));
-            providers.Add(new AvoidEdges(new Vector3(Field.precipiceLength + Field.Width, Position.Y, 0)));
-            providers.Add(new AvoidEdges(new Vector3(Field.precipiceLength, Field.precipiceLength + Field.Height, 0)));
-            providers.Add(new AvoidEdges(new Vector3(Field.precipiceLength, Field.precipiceLength, 0)));
-
-
-            foreach(var item in Field.Members)
+            foreach (var item in Field.Members)
             {
                 if (item.Equals(this))
                     providers.Add(new Flee(item.Position));
