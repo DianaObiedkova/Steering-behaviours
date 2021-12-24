@@ -31,5 +31,22 @@ namespace Steering_behaviours.Models
         public Hunter GetHunter() {
             return (Hunter)Members.Find(c => c.GetType() == typeof(Hunter));
         }  
+
+        //harmValues int[]: [ID, harmValue]
+        public void UpdateInjuries(List<int[]> harmValues) {
+            foreach (var item in harmValues)
+            {
+                Creature current = Members.Find(c => c.ID == item[0]);
+                bool isAlive = current.Injure(item[1]);
+                if(!isAlive)
+                    Members.Remove(current);
+            }
+        }  
+        public void UpdatePositions() {
+            foreach (var creature in Members)
+            {
+                creature.Update();
+            }            
+        }  
     }
 }

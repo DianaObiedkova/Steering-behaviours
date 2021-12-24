@@ -19,6 +19,12 @@ namespace Steering_behaviours.Models
             field.Populate(rabbitsNum, wolvesNum, doeNum);
         }
 
+        public void UpdateCreatures(List<int[]> harmValues)
+        {
+            field.UpdateInjuries(harmValues);
+            field.UpdatePositions();
+        }
+
         private void CheckGameEnd()
         {
             if (field.GetHunter().Health <= 0)
