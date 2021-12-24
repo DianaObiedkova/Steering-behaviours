@@ -18,5 +18,13 @@ namespace Steering_behaviours.Models
         {
             field.Populate(rabbitsNum, wolvesNum, doeNum);
         }
+
+        private void CheckGameEnd()
+        {
+            if (field.GetHunter().Health <= 0)
+            {
+                IsEnded = true;
+            }
+        }
     }
 }

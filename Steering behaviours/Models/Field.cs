@@ -26,6 +26,10 @@ namespace Steering_behaviours.Models
                 Members.Add(new Wolf());
             for(int i=0; i<doeNum; i++) 
                 Members.Add(new Doe());
-        }    
+        }  
+
+        public Hunter GetHunter() {
+            return (Hunter)Members.Find(c => c.GetType() == typeof(Hunter));
+        }  
     }
 }
