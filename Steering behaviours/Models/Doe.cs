@@ -12,7 +12,7 @@ namespace Steering_behaviours.Models
     public class Doe : Animal
     {
 
-        public Doe() : base(1, 1, Color.FromName("SlateBlue"), new Vector3(), 10, 10, 5) // implement values for position
+        public Doe() : base(1, 1, Color.FromName("SlateBlue"), new Vector3(ran.Next(1, Field.Width - 1), ran.Next(1, Field.Height - 1),0), 10, 10, 5)
         {
 
         }

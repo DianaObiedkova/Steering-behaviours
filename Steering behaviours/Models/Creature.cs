@@ -16,6 +16,7 @@ namespace Steering_behaviours.Models
         public float Weight { get; private set; }
         public Color Color { get; set; }
         public float MaxSpeed { get; private set; }
+        public static Random ran = new Random();
 
         public Creature(int health, float weight, Color color, Vector3 position, float maxSpeed)
         {

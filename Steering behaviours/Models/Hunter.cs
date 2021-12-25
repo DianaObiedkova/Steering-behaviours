@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace Steering_behaviours.Models
@@ -11,7 +12,7 @@ namespace Steering_behaviours.Models
         public Gun Gun { get; set; }
         public List<Bullet> Bullets { get; private set; }
 
-        public Hunter() : base(1, 1, Color.FromName("SlateBlue"), new System.Numerics.Vector3(),10) // implement values for position
+        public Hunter() : base(1, 1, Color.FromName("SlateBlue"), new Vector3(ran.Next(1, Field.Width - 1), ran.Next(1, Field.Height - 1), 0), 10)
         {
             Bullets = new List<Bullet>();
         }

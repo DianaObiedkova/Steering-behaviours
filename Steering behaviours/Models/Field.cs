@@ -16,8 +16,8 @@ namespace Steering_behaviours.Models
             Members = new List<Creature>();
         }
 
-        //нужно прописать спавн в рандомных позициях для Rabbit(), Wolf()
-        //спавн для Doe(): первая рандомно, остальные рядом + немного рандома
+        //нужно прописать спавн в рандомных позициях для Rabbit(), Wolf()  -- уже в рандоме в конструкторах
+        //спавн для Doe(): первая рандомно, остальные рядом + немного рандома --надо подумать, пока полный рандом
         public void Populate(int rabbitsNum, int wolvesNum, int doeNum) {
             Members.Add(new Hunter());
             for(int i=0; i<rabbitsNum; i++) 
