@@ -11,7 +11,7 @@ namespace Steering_behaviours.Models
     public abstract class Animal : Creature
     {
         private const float Epsilon = 0.05f;
-        public long Time { get; private set; }
+        
         public float VelocityLimit { get; set; }
         public float SteeringForceLimit { get; set; }
         public float FleeDistanceLimit { get; private set; }
@@ -26,7 +26,6 @@ namespace Steering_behaviours.Models
             VelocityLimit = minVelocityLimit;
             SteeringForceLimit = steeringForceLimit;
 
-            Time = GetMils();
         }
         private void ApplyForce(Vector3 force)
         {
@@ -90,8 +89,6 @@ namespace Steering_behaviours.Models
             var friction = Velocity.Mult(-1).Normalize().Mult((float)0.5);
             ApplyForce(friction);                
         }
-
-        public static long GetMils() => DateTimeOffset.Now.ToUnixTimeMilliseconds();
         protected abstract List<DesiredVelocityProvider> GetProviders();
 
         public void SetMarnitudeIfLargerMax(Vector3 vect)
