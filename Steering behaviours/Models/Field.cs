@@ -10,7 +10,7 @@ namespace Steering_behaviours.Models
         public static int Height = 1500;
         public static int Width = 1000;
         public static int precipiceLength = 100;
-        public static List<Creature> Members { get; set; }
+        public static List<Creature> Members { get; private set; }
 
         public Field() {
             Members = new List<Creature>();

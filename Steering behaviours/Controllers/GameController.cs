@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Steering_behaviours.Helpers;
 using Steering_behaviours.Models;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,11 @@ namespace Steering_behaviours.Controllers
         public void MoveHunter()
         {
             
+        }
+        [HttpGet]
+        public IEnumerable<FrontCreature> GetMembersPositions()
+        {
+            return Game.GetCreatures().Select(x => new FrontCreature(x.ID, x.Position.X, x.Position.Y));
         }
 
         //params: string "Xpos Ypos"
