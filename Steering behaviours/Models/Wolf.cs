@@ -13,7 +13,7 @@ namespace Steering_behaviours.Models
     {
         private int damage = 1;
         
-        public Wolf() : base(1, 1, Color.FromName("SlateBlue"), new Vector3(ran.Next(1, Field.Width - 1), ran.Next(1, Field.Height - 1), 0), 40, 40, 20)
+        public Wolf() : base(1, 1, Color.FromName("SlateBlue"), new Vector3(ran.Next(1, Field.Width - 1), ran.Next(1, Field.Height - 1), 0), 40, 40,150,0, 20)
         {
 
         }
