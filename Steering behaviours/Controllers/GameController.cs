@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace Steering_behaviours.Controllers
@@ -26,17 +27,16 @@ namespace Steering_behaviours.Controllers
         }
 
         //params: direction
-        public IActionResult MoveHunter()
+        public void MoveHunter()
         {
             
-            return View();
         }
 
-        //no params (?)
-        public IActionResult TakeShot()
+        //params: string "Xpos Ypos"
+        public void TakeShot(string targetPosition)
         {
-            
-            return View();
+            string[] result = targetPosition.Split(" ");
+            Game.TakeShot(new Vector3(float.Parse(result[0]), float.Parse(result[1]), 0));
         }
 
         //returns current creatures' positions

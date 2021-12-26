@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 namespace Steering_behaviours.Models
 {
@@ -24,6 +25,11 @@ namespace Steering_behaviours.Models
             field.UpdateInjuries(harmValues);
             field.UpdatePositions();
             return field.GetCreatures();
+        }
+
+        public void TakeShot(Vector3 targetPosition)
+        {
+            field.GetHunter().TakeShot(targetPosition);
         }
 
         private void CheckGameEnd()

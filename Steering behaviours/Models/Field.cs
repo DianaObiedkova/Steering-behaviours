@@ -38,7 +38,7 @@ namespace Steering_behaviours.Models
             foreach(Creature creature in Members) {
                 result.Add(new string[] {
                     creature.ID.ToString(), 
-                    creature.Position.X.ToString()+creature.Position.Y.ToString(), 
+                    creature.Position.X.ToString()+" "+creature.Position.Y.ToString(), 
                     creature.Health.ToString(),
                     creature.Color.Name});
             }
