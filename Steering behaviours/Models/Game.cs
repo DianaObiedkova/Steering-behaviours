@@ -19,10 +19,11 @@ namespace Steering_behaviours.Models
             field.Populate(rabbitsNum, wolvesNum, doeNum);
         }
 
-        public void UpdateCreatures(List<int[]> harmValues)
+        public List<string[]> UpdateCreatures(List<int[]> harmValues)
         {
             field.UpdateInjuries(harmValues);
             field.UpdatePositions();
+            return field.GetCreatures();
         }
 
         private void CheckGameEnd()

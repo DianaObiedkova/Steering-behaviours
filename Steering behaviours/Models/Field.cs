@@ -32,6 +32,19 @@ namespace Steering_behaviours.Models
             return (Hunter)Members.Find(c => c.GetType() == typeof(Hunter));
         }  
 
+        //ID, position, health, color
+        public List<string[]> GetCreatures() {
+            List<string[]> result = new List<string[]>();
+            foreach(Creature creature in Members) {
+                result.Add(new string[] {
+                    creature.ID.ToString(), 
+                    creature.Position.X.ToString()+creature.Position.Y.ToString(), 
+                    creature.Health.ToString(),
+                    creature.Color.Name});
+            }
+            return result;
+        }  
+
         //harmValues int[]: [ID, harmValue]
         public void UpdateInjuries(List<int[]> harmValues) {
             foreach (var item in harmValues)

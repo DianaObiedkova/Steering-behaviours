@@ -40,10 +40,10 @@ namespace Steering_behaviours.Controllers
         }
 
         //returns current creatures' positions
-        public IActionResult UpdateField()
+        //harmValues int[]: [ID, harmValue]
+        public List<string[]> UpdateField(List<int[]> harmValues)
         {
-            
-            return View();
+            return Game.UpdateCreatures(harmValues);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
