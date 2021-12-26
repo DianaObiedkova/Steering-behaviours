@@ -30,8 +30,8 @@ namespace Steering_behaviours.Controllers
         public void MoveHunter(int X, int Y)
         {
             float[] hunterPos = Game.GetHunterPos();
-            int currX = hunterPos[0];
-            int currY = hunterPos[1];
+            int currX = (int)hunterPos[0];
+            int currY = (int)hunterPos[1];
             if((currX-X)>0) {
                 Game.MoveHunter("left");
             } else if ((currX-X)<0) {

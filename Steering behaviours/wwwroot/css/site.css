@@ -75,8 +75,10 @@ body {
     width: 750px;
     height: 500px;
     border: 2px solid black;
-    position:relative;
-    overflow:hidden;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    float: left;
 }
 
 div .circle{
@@ -89,3 +91,12 @@ div .circle{
     background-color: black;
 }
 
+#helper {
+    width:20%;
+    height:500px;
+    background: pink;
+    display: inline-block;
+    float: left;
+    border: 2px solid pink;
+    margin-left:50px;
+}
