@@ -81,5 +81,14 @@ namespace Steering_behaviours.Models
 
             return counter == 1 ? Directions.FirstOrDefault(x => x.Value == 1).Key : throw new ArgumentException("Not one current state specified, logic failure.");
         }
+
+        public void UpdateDirections(Direction direction)
+        {
+            List<Direction> keys = new List<Direction>(Directions.Keys);
+            foreach (Direction key in keys)
+                Directions[key] = 0;
+            if(!Directions.TryAdd(direction, 1))
+                Directions[direction] = 1;
+        }
     }
 }

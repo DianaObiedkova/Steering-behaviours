@@ -28,9 +28,9 @@ namespace Steering_behaviours.Controllers
         }
 
         //params: direction
-        public void MoveHunter()
+        public void MoveHunter(string directionName)
         {
-            
+            Game.MoveHunter(directionName);
         }
         [HttpGet]
         public IEnumerable<FrontCreature> GetMembersPositions()

@@ -37,6 +37,31 @@ namespace Steering_behaviours.Models
             field.GetHunter().TakeShot(targetPosition);
         }
 
+        //update hunter's direction
+        public void MoveHunter(string directionName)
+        {
+            Hunter player = field.GetHunter();
+            Direction direction;
+            switch(directionName) {
+                case "top":
+                    direction = Direction.Top;
+                    break;
+                case "down":
+                    direction = Direction.Down;
+                    break;
+                case "left":
+                    direction = Direction.Left;
+                    break;
+                case "right":
+                    direction = Direction.Right;
+                    break;
+                default:
+                direction = Direction.Top;
+                    break;
+            }
+            player.UpdateDirections(direction);
+        }
+
         private void CheckGameEnd()
         {
             if (field.GetHunter().Health <= 0)
