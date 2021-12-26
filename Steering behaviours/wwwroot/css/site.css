@@ -72,8 +72,8 @@ body {
 }
 
 .field {
-    width: 1200px;
-    height: 800px;
+    width: 750px;
+    height: 500px;
     border: 2px solid black;
     position:relative;
     overflow:hidden;

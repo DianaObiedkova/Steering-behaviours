@@ -17,7 +17,7 @@
 //    var newposY = y - 60; $(".circle").css("transform", "translate3d(" + newposX + "px," + newposY + "px,0px)");
 //});
 
-var mouseX = 0, mouseY = 0, limitX = 1200-310, limitY = 800;
+var mouseX = 0, mouseY = 0, limitX = 750, limitY = 500;
 
 $(window).mousemove(function (e) {
     var offset = $('.field').offset();
