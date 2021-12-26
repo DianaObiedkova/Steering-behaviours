@@ -7,8 +7,8 @@ namespace Steering_behaviours.Models
 {
     public class Field
     {
-        public static int Height = 1500;
-        public static int Width = 1000;
+        public static int Height = 500;
+        public static int Width = 750;
         public static int precipiceLength = 100;
         public static List<Creature> Members { get; private set; }
 
