@@ -36,7 +36,7 @@ namespace Steering_behaviours.Controllers
         public IEnumerable<FrontCreature> GetMembersPositions()
         {
             Game.UpdateCreatures();
-            return Game.GetCreatures().Select(x => new FrontCreature(x.ID, x.Position.X, x.Position.Y));
+            return Game.GetCreatures().Select(x => new FrontCreature(x.ID, x.Position.X, x.Position.Y, x.GetType().Name));
         }
 
         //params: string "Xpos Ypos"
