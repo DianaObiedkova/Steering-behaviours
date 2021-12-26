@@ -1,3 +1,5 @@
+let creatures = [];
+
 var mouseX = 0, mouseY = 0, limitX = 750, limitY = 500;
 
 $(window).mousemove(function (e) {

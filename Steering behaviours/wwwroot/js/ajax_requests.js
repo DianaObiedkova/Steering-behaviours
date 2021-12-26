@@ -8,7 +8,7 @@ function MoveHunter() {
             "Y": hunter.getBoundingClientRect().top//$(this).css("top")
         },
         success: function (response) {
-            alert(response);
+            //alert(response);
         }
     });
 }
@@ -22,7 +22,7 @@ function TakeShot() {
             "Y": $(this).css("top")
         },
         success: function (response) {
-            alert(response);
+            //alert(response);
         }
     });
 }
@@ -34,7 +34,7 @@ function UpdateField() {
         //todo
         data: {},
         success: function (response) {
-            alert(response);
+            //alert(response);
         }
     });
 }
@@ -43,12 +43,14 @@ function GetPositions() {
         url: '/Game/GetMembersPositions',
         type: 'GET',
         success: function (response) {
-
+            //alert(response);
+            creatures = response;
             let helper = document.getElementById("helper");
             helper.innerHTML = "";
-            helper.insertAdjacentHTML('afterbegin', response);
-            //todo
-            alert(response);
+            creatures.forEach(element => {
+                helper.insertAdjacentHTML('afterbegin', element.id+" "+element.x+" "+element.y+" "+element.creatureType+", ");
+            });
+            //helper.insertAdjacentHTML('afterbegin', response.data);
         }
     });
 }
