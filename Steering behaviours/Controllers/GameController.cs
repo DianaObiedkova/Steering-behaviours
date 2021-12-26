@@ -11,6 +11,7 @@ namespace Steering_behaviours.Controllers
 {
     public class GameController:Controller
     {
+        public static Game Game { get; set; }
         private readonly ILogger<HomeController> _logger;
 
         public GameController(ILogger<HomeController> logger)
@@ -20,6 +21,28 @@ namespace Steering_behaviours.Controllers
 
         public IActionResult StartGame()
         {
+            Game = new Game();
+            return View();
+        }
+
+        //params: direction
+        public IActionResult MoveHunter()
+        {
+            
+            return View();
+        }
+
+        //no params (?)
+        public IActionResult TakeShot()
+        {
+            
+            return View();
+        }
+
+        //returns current creatures' positions
+        public IActionResult UpdateField()
+        {
+            
             return View();
         }
 
