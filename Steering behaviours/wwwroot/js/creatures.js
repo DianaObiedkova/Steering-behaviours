@@ -13,8 +13,8 @@ var follower = $("#circle");
 var xp = 0, yp = 0;
 var loop = setInterval(function () {
     // change 12 to alter damping higher is slower
-    xp += (mouseX - xp) / 12;
-    yp += (mouseY - yp) / 12;
+    xp += (mouseX - xp) / 24;
+    yp += (mouseY - yp) / 24;
     follower.css({ left: xp, top: yp });
 
 }, 30);
