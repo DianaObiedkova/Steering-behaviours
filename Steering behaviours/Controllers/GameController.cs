@@ -24,6 +24,7 @@ namespace Steering_behaviours.Controllers
         public IActionResult StartGame()
         {
             Game = new Game();
+            Game.StartGame(10, 3, 15);
             return View();
         }
 
