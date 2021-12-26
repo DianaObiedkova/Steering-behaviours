@@ -25,11 +25,10 @@ namespace Steering_behaviours.Models
             return Field.Members;
         }
 
-        public List<string[]> UpdateCreatures(List<int[]> harmValues)
+        public void UpdateCreatures(List<int[]> harmValues)
         {
             field.UpdateInjuries(harmValues);
             field.UpdatePositions();
-            return field.GetCreatures();
         }
 
         public void TakeShot(Vector3 targetPosition)
