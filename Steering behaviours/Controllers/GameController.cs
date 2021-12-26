@@ -27,7 +27,7 @@ namespace Steering_behaviours.Controllers
             Game.StartGame(10, 3, 15);
             return View();
         }
-
+        [HttpPost]
         public void MoveHunter(int X, int Y)
         {
             float[] hunterPos = Game.GetHunterPos();
@@ -51,16 +51,17 @@ namespace Steering_behaviours.Controllers
         }
 
         //params: string "Xpos Ypos"
+        [HttpPost]
         public void TakeShot(int X, int Y)
         {
             Game.TakeShot(new Vector3(X, Y, 0));
         }
 
-        //returns current creatures' positions
-        //harmValues int[]: [ID, harmValue]
-        public void UpdateField(List<int[]> harmValues)
+        //updates current creatures' positions
+        [HttpPost]
+        public void UpdateField()
         {
-            Game.UpdateCreatures(harmValues);
+            Game.UpdateCreatures();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

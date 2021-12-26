@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace Steering_behaviours.Models
@@ -45,15 +46,12 @@ namespace Steering_behaviours.Models
             return result;
         }  
 
-        //harmValues int[]: [ID, harmValue]
-        public void UpdateInjuries(List<int[]> harmValues) {
-            foreach (var item in harmValues)
-            {
-                Creature current = Members.Find(c => c.ID == item[0]);
-                bool isAlive = current.Injure(item[1]);
-                if(!isAlive)
-                    Members.Remove(current);
-            }
+        //harmValue int[]: [ID, harmValue]
+        public void UpdateInjuries(Vector3 position, int harm) {
+            Creature current = Members.Find(c => c.Position ==  position);
+            bool isAlive = current.Injure(harm);
+            if(!isAlive)
+                Members.Remove(current);
         }  
         public void UpdatePositions() {
             foreach (var creature in Members)
