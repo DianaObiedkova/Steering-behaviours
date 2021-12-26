@@ -1,11 +1,13 @@
 ﻿
+var hunter = document.getElementById("circle");
+
 function MoveHunter() {
     $.ajax({
         url: '/Game/MoveHunter',
         type: 'POST',
         data: {
-            "X": $(this).css("left"),
-            "Y": $(this).css("top")
+            "X": hunter.getBoundingClientRect().left,//$(this).css("left"),
+            "Y": hunter.getBoundingClientRect().top//$(this).css("top")
         },
         success: function (response) {
             alert(response);
@@ -45,6 +47,7 @@ function GetPositions() {
         success: function (response) {
 
             let helper = document.getElementById("helper");
+            helper.innerHTML = "";
             helper.insertAdjacentHTML('afterbegin', response);
             //todo
             alert(response);

@@ -47,18 +47,18 @@ namespace Steering_behaviours.Controllers
         [HttpGet]
         public IEnumerable<FrontCreature> GetMembersPositions()
         {
+            Game.UpdateCreatures();
             return Game.GetCreatures().Select(x => new FrontCreature(x.ID, x.Position.X, x.Position.Y));
         }
 
         //params: string "Xpos Ypos"
-        [HttpPost]
         public void TakeShot(int X, int Y)
         {
             Game.TakeShot(new Vector3(X, Y, 0));
         }
 
-        //updates current creatures' positions
-        [HttpPost]
+        //returns current creatures' positions
+        //harmValues int[]: [ID, harmValue]
         public void UpdateField()
         {
             Game.UpdateCreatures();
