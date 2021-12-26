@@ -3,7 +3,9 @@ var field = document.querySelector(".field");
 
 function createBullet(bullet) {
     bullet.classList.add("bullet");
-    hunter.appendChild(bullet);
+    bullet.style.left = hunter.offsetLeft + 'px';
+    bullet.style.top = hunter.offsetTop + 'px';
+    hunter.after(bullet);
 }
 
 
