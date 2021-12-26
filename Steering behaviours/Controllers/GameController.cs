@@ -27,10 +27,21 @@ namespace Steering_behaviours.Controllers
             return View();
         }
 
-        //params: direction
-        public void MoveHunter(string directionName)
+        public void MoveHunter(int X, int Y)
         {
-            Game.MoveHunter(directionName);
+            float[] hunterPos = Game.GetHunterPos();
+            int currX = hunterPos[0];
+            int currY = hunterPos[1];
+            if((currX-X)>0) {
+                Game.MoveHunter("left");
+            } else if ((currX-X)<0) {
+                Game.MoveHunter("right");
+            }
+            if((currY-Y)>0) {
+                Game.MoveHunter("top");
+            } else if((currY-Y)<0) {
+                Game.MoveHunter("down");
+            }
         }
         [HttpGet]
         public IEnumerable<FrontCreature> GetMembersPositions()

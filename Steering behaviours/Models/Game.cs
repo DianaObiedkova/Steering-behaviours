@@ -61,6 +61,12 @@ namespace Steering_behaviours.Models
             player.UpdateDirections(direction);
         }
 
+        public float[] GetHunterPos()
+        {
+            Hunter player = field.GetHunter();
+            return new float[] {player.Position.X, player.Position.Y};
+        }
+
         private void CheckGameEnd()
         {
             if (field.GetHunter().Health <= 0)
