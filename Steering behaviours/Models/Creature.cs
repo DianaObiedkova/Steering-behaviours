@@ -31,6 +31,10 @@ namespace Steering_behaviours.Models
             Health -= harm;
             return Health > 0;
         }
+        public void UpdatePosition(Vector3 position)
+        {
+            Position = position;
+        }
         public static long GetMils() => DateTimeOffset.Now.ToUnixTimeMilliseconds();
         public abstract void Update();
         

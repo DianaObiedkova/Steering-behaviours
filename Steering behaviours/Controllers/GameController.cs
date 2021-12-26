@@ -30,19 +30,7 @@ namespace Steering_behaviours.Controllers
         [HttpPost]
         public void MoveHunter(int X, int Y)
         {
-            float[] hunterPos = Game.GetHunterPos();
-            int currX = (int)hunterPos[0];
-            int currY = (int)hunterPos[1];
-            if((currX-X)>0) {
-                Game.MoveHunter("left");
-            } else if ((currX-X)<0) {
-                Game.MoveHunter("right");
-            }
-            if((currY-Y)>0) {
-                Game.MoveHunter("top");
-            } else if((currY-Y)<0) {
-                Game.MoveHunter("down");
-            }
+            Game.MoveHunter(X, Y);
         }
         [HttpGet]
         public IEnumerable<FrontCreature> GetMembersPositions()

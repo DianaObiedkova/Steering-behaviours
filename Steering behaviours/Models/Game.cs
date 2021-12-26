@@ -37,28 +37,22 @@ namespace Steering_behaviours.Models
         }
 
         //update hunter's direction
-        public void MoveHunter(string directionName)
+        public void MoveHunter(int X, int Y)
         {
             Hunter player = field.GetHunter();
-            Direction direction;
-            switch(directionName) {
-                case "top":
-                    direction = Direction.Top;
-                    break;
-                case "down":
-                    direction = Direction.Down;
-                    break;
-                case "left":
-                    direction = Direction.Left;
-                    break;
-                case "right":
-                    direction = Direction.Right;
-                    break;
-                default:
-                direction = Direction.Top;
-                    break;
+            int currX = (int)player.Position.X;
+            int currY = (int)player.Position.Y;
+            if((currX-X)>0) {  
+                player.UpdateDirections(Direction.Left);
+            } else if ((currX-X)<0) {
+                player.UpdateDirections(Direction.Right);
             }
-            player.UpdateDirections(direction);
+            if((currY-Y)>0) {
+                player.UpdateDirections(Direction.Top);
+            } else if((currY-Y)<0) {
+                player.UpdateDirections(Direction.Down);
+            }
+            player.UpdatePosition(new Vector3(X, Y, 0));
         }
 
         public float[] GetHunterPos()
