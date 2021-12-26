@@ -64,7 +64,8 @@ namespace Steering_behaviours.Models
         public float[] GetHunterPos()
         {
             Hunter player = field.GetHunter();
-            return new float[] {player.Position.X, player.Position.Y};
+            float[] res = {player.Position.X, player.Position.Y};
+            return res;
         }
 
         private void CheckGameEnd()

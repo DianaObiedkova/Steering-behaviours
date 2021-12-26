@@ -30,8 +30,8 @@ namespace Steering_behaviours.Controllers
         public void MoveHunter(int X, int Y)
         {
             float[] hunterPos = Game.GetHunterPos();
-            int currX = hunterPos[0];
-            int currY = hunterPos[1];
+            int currX = (int)hunterPos[0];
+            int currY = (int)hunterPos[1];
             if((currX-X)>0) {
                 Game.MoveHunter("left");
             } else if ((currX-X)<0) {
@@ -50,10 +50,9 @@ namespace Steering_behaviours.Controllers
         }
 
         //params: string "Xpos Ypos"
-        public void TakeShot(string targetPosition)
+        public void TakeShot(int X, int Y)
         {
-            string[] result = targetPosition.Split(" ");
-            Game.TakeShot(new Vector3(float.Parse(result[0]), float.Parse(result[1]), 0));
+            Game.TakeShot(new Vector3(X, Y, 0));
         }
 
         //returns current creatures' positions

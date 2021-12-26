@@ -28,7 +28,45 @@ function MoveHunter(){
      }
     });
 }
+
+function TakeShot(){
+    $.ajax({
+     url: '/Game/TakeShot',
+     type: 'POST',
+     data: { "X": $(this).css("left"), 
+            "Y": $(this).css("top")},
+     success: function(response){
+      alert(response);
+     }
+    });
+}
    
-   $(document).ready(function(){
-    setInterval(fetchdata,5000);
-   });
+function UpdateField(){
+    $.ajax({
+     url: '/Game/UpdateField',
+     type: 'POST',
+     //todo
+     data: { },
+     success: function(response){
+      alert(response);
+     }
+    });
+}
+function GetPositions(){
+    $.ajax({
+     url: '/Game/GetMembersPositions',
+     type: 'GET',
+     success: function(response){
+      //todo
+      alert(response);
+     }
+    });
+}
+
+$(document).ready(function(){
+    setInterval(UpdateField,5000);
+    setInterval(GetPositions,5000);
+});
+
+//impement onclick triggering TakeShot
+//implement (?) triggering MoveHunter (using creatures.js)
