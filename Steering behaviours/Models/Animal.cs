@@ -61,6 +61,7 @@ namespace Steering_behaviours.Models
 
             Acceleration = new Vector3(0);
             Position = Position.Add(Velocity.Mult((float)delta));
+            Console.WriteLine("ID:"+ID+" X:"+Position.X+" Y:"+Position.Y);
             //todo: !!
             //transform.rotation = Quaternion.LookRotation(velocity);
         }
@@ -70,16 +71,23 @@ namespace Steering_behaviours.Models
             var providers = GetProviders();
             var steering = new Vector3(0);
 
+            var maxXsteering  = new Vector3(0);
+            var maxYsteering  = new Vector3(0);
+
             foreach(var item in providers)
             {
                 var desiredVelocity = item.GetDesiredVelocity(this);
                 //if (desiredVelocity.Equals(default))
                 if (desiredVelocity.X != 0 || desiredVelocity.Y != 0 || desiredVelocity.Z != 0)
                 {
-                    steering = steering.Add(desiredVelocity.Sub(Velocity));
+                    if(Math.Abs(desiredVelocity.X) > Math.Abs(maxXsteering.X))
+                        maxXsteering = desiredVelocity.Sub(Velocity);
+                    if(Math.Abs(desiredVelocity.Y) > Math.Abs(maxYsteering.Y))
+                        maxYsteering = desiredVelocity.Sub(Velocity);
+                    //steering = steering.Add(desiredVelocity.Sub(Velocity));
                 }
             }
-
+            steering = steering.Add(new Vector3(maxXsteering.X, maxYsteering.Y, 0));
             steering = steering.Sub(Velocity);
 
             SetMarnitudeIfLargerMax(steering);
