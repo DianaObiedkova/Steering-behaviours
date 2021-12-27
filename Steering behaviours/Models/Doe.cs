@@ -21,10 +21,10 @@ namespace Steering_behaviours.Models
         {
             var providers = new List<DesiredVelocityProvider>
             {
-                new AvoidEdges(new Vector3(Position.X, Field.precipiceLength, 0)),
-                new AvoidEdges(new Vector3(Field.precipiceLength + Field.Width, Position.Y, 0)),
-                new AvoidEdges(new Vector3(Field.precipiceLength, Field.precipiceLength + Field.Height, 0)),
-                new AvoidEdges(new Vector3(Field.precipiceLength, Field.precipiceLength, 0))
+                new AvoidEdges(new Vector3(Position.X, 0, 0)),
+                new AvoidEdges(new Vector3(Field.Width, Position.Y, 0)),
+                new AvoidEdges(new Vector3(Position.X, Field.Height, 0)),
+                new AvoidEdges(new Vector3(0, Position.Y, 0))
             };
 
             foreach (var item in Field.Members)
