@@ -29,7 +29,7 @@ namespace Steering_behaviours.Models
 
             foreach (var item in Field.Members)
             {
-                if (item.Equals(this))
+                if (!item.Equals(this))
                     providers.Add(new Flee(item.Position));
             }
 
