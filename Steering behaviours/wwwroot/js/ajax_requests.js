@@ -1,6 +1,4 @@
 ﻿
-var hunter = document.getElementById("circle");
-
 function MoveHunter() {
     $.ajax({
         url: '/Game/MoveHunter',
