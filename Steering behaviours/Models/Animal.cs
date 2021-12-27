@@ -27,18 +27,19 @@ namespace Steering_behaviours.Models
             SteeringForceLimit = steeringForceLimit;
             FleeDistanceLimit = fleeDistanceLimit;
             MinFleeDistance = minFleeDistance;
+            Velocity = new Vector3(0);
+            Acceleration = new Vector3(0);
         }
         private void ApplyForce(Vector3 force)
         {
             force.Divide(Weight);
-            Acceleration = new Vector3(Acceleration.X + force.X, Acceleration.Y + force.Y, Acceleration.Z + force.Z);
+            Acceleration = Acceleration.Add(force);
         }
         public override void Update()
         {
             ApplyFriction();
             ApplySteeringForce();
             ApplyForces();
-
         }
 
         private void ApplyForces()
@@ -46,11 +47,11 @@ namespace Steering_behaviours.Models
             double delta = (GetMils() - Time) * 0.01;
             Time = GetMils();
 
-            Velocity.Add(Acceleration.Mult((float)delta));
+            Velocity = Velocity.Add(Acceleration.Mult((float)delta));
 
             if (Velocity.Magnitude() > MaxSpeed)
             {
-                Velocity.SetMagnitude(MaxSpeed);
+                Velocity = Velocity.SetMagnitude(MaxSpeed);
             }
             else if(Velocity.Magnitude() < Epsilon)
             {
@@ -59,7 +60,7 @@ namespace Steering_behaviours.Models
             }
 
             Acceleration = new Vector3(0);
-            Position.Add(Velocity.Mult((float)delta));
+            Position = Position.Add(Velocity.Mult((float)delta));
             //todo: !!
             //transform.rotation = Quaternion.LookRotation(velocity);
         }
@@ -72,13 +73,14 @@ namespace Steering_behaviours.Models
             foreach(var item in providers)
             {
                 var desiredVelocity = item.GetDesiredVelocity(this);
-                if (desiredVelocity != default)
+                //if (desiredVelocity.Equals(default))
+                if (desiredVelocity.X != 0 || desiredVelocity.Y != 0 || desiredVelocity.Z != 0)
                 {
-                    steering.Add(desiredVelocity.Sub(Velocity));
+                    steering = steering.Add(desiredVelocity.Sub(Velocity));
                 }
             }
 
-            steering.Sub(Velocity);
+            steering = steering.Sub(Velocity);
 
             SetMarnitudeIfLargerMax(steering);
 
