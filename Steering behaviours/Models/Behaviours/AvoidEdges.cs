@@ -15,7 +15,9 @@ namespace Steering_behaviours.Models.Behaviours
             var avoidDistance = 75;
             var distance = Position.Sub(an.Position);
 
-            if(an.Position.X>0 && an.Position.Y>0 && an.Position.X<750 && an.Position.Y<500)
+            return distance.Magnitude() > avoidDistance ? new Vector3() : distance.Normalize().Mult(-an.VelocityLimit);
+
+            if (an.Position.X>0 && an.Position.Y>0 && an.Position.X<750 && an.Position.Y<500)
                 return distance.Magnitude() > avoidDistance ? new Vector3() : distance.Normalize().Mult(-an.VelocityLimit);
             else {
                 if(an.Position.X<0)
