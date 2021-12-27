@@ -19,7 +19,6 @@ namespace Steering_behaviours.Models
         {
             var providers = new List<DesiredVelocityProvider>
             {
-                new Wander(Position),
                 new AvoidEdges(new Vector3(Position.X, Field.precipiceLength, 0)),
                 new AvoidEdges(new Vector3(Field.precipiceLength + Field.Width, Position.Y, 0)),
                 new AvoidEdges(new Vector3(Field.precipiceLength, Field.precipiceLength + Field.Height, 0)),
@@ -32,6 +31,8 @@ namespace Steering_behaviours.Models
                 if (!item.Equals(this))
                     providers.Add(new Flee(item.Position));
             }
+
+            providers.Add(new Wander(Position));
 
             return providers;
         }

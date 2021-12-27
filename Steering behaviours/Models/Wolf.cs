@@ -24,8 +24,7 @@ namespace Steering_behaviours.Models
                 new AvoidEdges(new Vector3(Position.X, Field.precipiceLength, 0)),
                 new AvoidEdges(new Vector3(Field.precipiceLength + Field.Width, Position.Y, 0)),
                 new AvoidEdges(new Vector3(Field.precipiceLength, Field.precipiceLength + Field.Height, 0)),
-                new AvoidEdges(new Vector3(Field.precipiceLength, Field.precipiceLength, 0)),
-                new Wander(Position)
+                new AvoidEdges(new Vector3(Field.precipiceLength, Field.precipiceLength, 0))
             };
 
             foreach (var item in Field.Members)
@@ -33,6 +32,8 @@ namespace Steering_behaviours.Models
                 if (!(item is Wolf))
                     providers.Add(new Seek(item.Position));
             }
+
+            providers.Add(new Wander(Position));
 
             return providers;
         }

@@ -11,8 +11,8 @@ function createBullet(bullet) {
 
 $(document).ready(function(){
     //setInterval(UpdateField,5000);
-    setInterval(GetPositions, 5000);
-    setInterval(MoveHunter, 5000);
+    setInterval(GetPositions, 1000);
+    setInterval(MoveHunter, 1000);
 });
 
 field.addEventListener("click", getClickPosition, false);

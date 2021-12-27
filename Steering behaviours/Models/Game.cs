@@ -43,14 +43,20 @@ namespace Steering_behaviours.Models
             Hunter player = field.GetHunter();
             int currX = (int)player.Position.X;
             int currY = (int)player.Position.Y;
-            if((currX-X)>0) {  
+            if ((currX - X) > 0)
+            {
                 player.UpdateDirections(Direction.Left);
-            } else if ((currX-X)<0) {
+            }
+            else if ((currX - X) < 0)
+            {
                 player.UpdateDirections(Direction.Right);
             }
-            if((currY-Y)>0) {
+            if ((currY - Y) > 0)
+            {
                 player.UpdateDirections(Direction.Top);
-            } else if((currY-Y)<0) {
+            }
+            else if ((currY - Y) < 0)
+            {
                 player.UpdateDirections(Direction.Down);
             }
             player.UpdatePosition(new Vector3(X, Y, 0));
