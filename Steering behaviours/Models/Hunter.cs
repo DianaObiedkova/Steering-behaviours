@@ -26,7 +26,7 @@ namespace Steering_behaviours.Models
         }
         public override void Update()
         {
-            foreach(var b in Bullets)
+            foreach(var b in Bullets.ToList())
             {
                 b.UpdatePosition();
                 if (!b.IsActing)
