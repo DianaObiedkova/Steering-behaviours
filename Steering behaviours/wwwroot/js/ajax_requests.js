@@ -54,6 +54,10 @@ function GetPositions() {
             helper.innerHTML = "";
             creatures.forEach(element => {
                 helper.insertAdjacentHTML('afterbegin', element.id + " " + element.x + " " + element.y + " " + element.creatureType + ", ");
+
+                if (document.getElementById(element.id) !== null) {
+                    removeAnimal(element.id);
+                }
                 createAnimal(element.id, element.x, element.y, element.creatureType);
             });
             //helper.insertAdjacentHTML('afterbegin', response.data);
@@ -114,4 +118,9 @@ function createAnimal(id,posX,posY,type){
     }
     
     field.appendChild(animal);
+}
+
+function removeAnimal(id) {
+    var elem = document.getElementById(id);
+    return elem.remove();
 }
