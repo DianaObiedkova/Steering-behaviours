@@ -13,16 +13,21 @@ function MoveHunter() {
     });
 }
 
-function TakeShot() {
+function TakeShot(bullet, xPosition, yPosition) {
     $.ajax({
         url: '/Game/TakeShot',
         type: 'POST',
         data: {
-            "X": $(this).css("left"),
-            "Y": $(this).css("top")
+            "X": xPosition,//$(this).css("left"),
+            "Y": yPosition//$(this).css("top")
         },
         success: function (response) {
-            //alert(response);
+            alert("Bullets left: " + response);
+
+            bullet.style.left = xPosition + "px";
+            bullet.style.top = yPosition + "px";
+
+            setTimeout(removeAllBullets, 1000);
         }
     });
 }

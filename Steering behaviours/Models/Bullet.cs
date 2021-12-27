@@ -12,9 +12,9 @@ namespace Steering_behaviours.Models
         private Vector3 StartPosition { get; set; }
         private Vector3 Position { get; set; }
         private Vector3 Direction { get; set; }
-        private int maxDistance;
+        private readonly int maxDistance;
         private long Time;
-        private float velocityLimit=50;
+        private readonly float velocityLimit=50;
         private int harm;
 
         public Bullet(Vector3 startPosition, Vector3 dir, int distance, int harm)
@@ -24,7 +24,7 @@ namespace Steering_behaviours.Models
             maxDistance = distance;
             this.harm = harm;
 
-            Time = Animal.GetMils();
+            Time = Creature.GetMils();
         }
 
         public bool IsActing
@@ -32,8 +32,8 @@ namespace Steering_behaviours.Models
 
         internal void UpdatePosition()
         {
-            double delta = (Animal.GetMils() - Time) * 0.01;
-            Time = Animal.GetMils();
+            double delta = (Creature.GetMils() - Time) * 0.01;
+            Time = Creature.GetMils();
 
             Position.Add(Direction.Mult((float)(velocityLimit * delta)));
         }

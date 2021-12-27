@@ -9,15 +9,15 @@ function createBullet(bullet) {
 }
 
 
-//$(document).ready(function(){
-//    //setInterval(UpdateField,5000);
-//    setInterval(GetPositions, 5000);
-//    setInterval(MoveHunter, 1000);
-//});
+$(document).ready(function(){
+    //setInterval(UpdateField,5000);
+    setInterval(GetPositions, 5000);
+    setInterval(MoveHunter, 5000);
+});
 
 field.addEventListener("click", getClickPosition, false);
 
-//field.onclick = function onclickRestartButton(e) {
+//field.onclick = function onclickField(e) {
 //    getClickPosition(e);
 //    removeAllBullets();
 //};
@@ -36,10 +36,8 @@ function getClickPosition(e) {
     var xPosition = e.clientX - parentPosition.x - (bullet.clientWidth / 2);
     var yPosition = e.clientY - parentPosition.y - (bullet.clientHeight / 2);
 
-    bullet.style.left = xPosition + "px";
-    bullet.style.top = yPosition + "px";
+    TakeShot(bullet, xPosition, yPosition);
 
-    //removeAllBullets();
 }
 
 // Helper function to get an element's exact position

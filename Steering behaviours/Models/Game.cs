@@ -30,10 +30,11 @@ namespace Steering_behaviours.Models
             field.UpdatePositions();
         }
 
-        public void TakeShot(Vector3 targetPosition)
+        public int TakeShot(Vector3 targetPosition)
         {
             field.GetHunter().TakeShot(targetPosition);
             field.UpdateInjuries(targetPosition, 1);
+            return field.GetHunter().Gun.Bullets;
         }
 
         //update hunter's direction

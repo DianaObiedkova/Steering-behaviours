@@ -9,22 +9,21 @@ namespace Steering_behaviours.Models
 {
     public class Gun
     {
-        private int bullets = 20;
         private readonly int harm;
         private readonly int distance;
+        public int Bullets { get; private set; } = 20;
 
-        public Gun(int bullets, int distance, int harm)
+        public Gun(int distance, int harm)
         {
-            this.bullets = bullets;
             this.distance = distance;
             this.harm = harm;
         }
 
         public Bullet Shot(Vector3 startPosition, Vector3 direction)
         {
-            if(bullets>0)
+            if(Bullets>0)
             {
-                bullets--;
+                Bullets--;
                 return new Bullet(startPosition, direction.Normalize(), distance, harm);
             }
             return default;

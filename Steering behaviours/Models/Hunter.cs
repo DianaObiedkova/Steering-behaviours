@@ -9,7 +9,7 @@ namespace Steering_behaviours.Models
 {
     public class Hunter : Creature
     {
-        public Gun Gun { get; set; }
+        public Gun Gun { get; private set; }
         public List<Bullet> Bullets { get; private set; }
 
         readonly Dictionary<Direction, int> Directions = new Dictionary<Direction, int>(); //needed to be filled from mouse events in "Game"
@@ -21,6 +21,8 @@ namespace Steering_behaviours.Models
             Directions.Add(Direction.Left, 0);
             Directions.Add(Direction.Down, 1);
             Directions.Add(Direction.Right, 0);
+
+            Gun = new Gun(500, 1);
         }
         public override void Update()
         {

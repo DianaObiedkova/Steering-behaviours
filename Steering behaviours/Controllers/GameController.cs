@@ -40,9 +40,10 @@ namespace Steering_behaviours.Controllers
         }
 
         //params: string "Xpos Ypos"
-        public void TakeShot(int X, int Y)
+        [HttpPost]
+        public int TakeShot(int X, int Y)
         {
-            Game.TakeShot(new Vector3(X, Y, 0));
+            return Game.TakeShot(new Vector3(X, Y, 0));
         }
 
         //returns current creatures' positions

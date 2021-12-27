@@ -49,9 +49,13 @@ namespace Steering_behaviours.Models
         //harmValue int[]: [ID, harmValue]
         public void UpdateInjuries(Vector3 position, int harm) {
             Creature current = Members.Find(c => c.Position ==  position);
-            bool isAlive = current.Injure(harm);
-            if(!isAlive)
-                Members.Remove(current);
+            if(!(current is null))
+            {
+                bool isAlive = current.Injure(harm);
+                if (!isAlive)
+                    Members.Remove(current);
+            }
+           
         }  
         public void UpdatePositions() {
             foreach (var creature in Members)
