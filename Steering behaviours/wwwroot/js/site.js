@@ -1,5 +1,6 @@
 ﻿var hunter = document.getElementById("circle");
 var field = document.querySelector(".field");
+addListeners();
 
 function createBullet(bullet) {
     bullet.classList.add("bullet");
@@ -16,6 +17,16 @@ $(document).ready(function(){
 });
 
 field.addEventListener("click", getClickPosition, false);
+
+function addListeners() {
+    var rabbits = document.querySelectorAll(".rabbit");
+    var wolves = document.querySelectorAll(".wolf");
+    var does = document.querySelectorAll(".doe");
+
+    rabbits.forEach((el) => el.addEventListener("click", getClickPosition, false));
+    wolves.forEach((el) => el.addEventListener("click", getClickPosition, false));
+    does.forEach((el) => el.addEventListener("click", getClickPosition, false));
+}
 
 //field.onclick = function onclickField(e) {
 //    getClickPosition(e);
@@ -37,7 +48,6 @@ function getClickPosition(e) {
     var yPosition = e.clientY - parentPosition.y - (bullet.clientHeight / 2);
 
     TakeShot(bullet, xPosition, yPosition);
-
 }
 
 // Helper function to get an element's exact position

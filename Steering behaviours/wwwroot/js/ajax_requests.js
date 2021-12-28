@@ -62,6 +62,7 @@ function GetPositions() {
                 helper.insertAdjacentHTML('afterbegin', element.id + " " + element.x + " " + element.y + " " + element.creatureType + ", ");
                 createAnimal(element.id, element.x, element.y, element.creatureType);
             });
+            addListeners();
             //helper.insertAdjacentHTML('afterbegin', response.data);
         }
     });
