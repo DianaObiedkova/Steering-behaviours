@@ -11,11 +11,12 @@ namespace Steering_behaviours.Models
 {
     public class Wolf : Animal
     {
-        private int damage = 1;
+        public readonly int harm = 1;
+        private long lifetime;
 
-        public Wolf() : base(1, 1, Color.FromName("SlateBlue"), new Vector3(ran.Next(1, Field.Width - 1), ran.Next(1, Field.Height - 1), 0), 20, 20, 75, 0, 10)
+        public Wolf() : base(1, 1, 25, Color.FromName("SlateBlue"), new Vector3(ran.Next(1, Field.Width - 1), ran.Next(1, Field.Height - 1), 0), 20, 20, 75, 0, 10)
         {
-
+            lifetime = GetMils();
         }
         protected override List<DesiredVelocityProvider> GetProviders()
         {
@@ -36,6 +37,16 @@ namespace Steering_behaviours.Models
             providers.Add(new Wander(Position));
 
             return providers;
+        }
+
+        public bool CanHarm(Creature cr)
+        {
+            if (Position.Sub(cr.Position).Magnitude() <= cr.Diameter)
+            {
+                lifetime = GetMils();
+                return true;
+            }
+            return false;
         }
     }
 }

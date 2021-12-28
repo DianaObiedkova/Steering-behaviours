@@ -19,9 +19,9 @@ namespace Steering_behaviours.Models
         public Vector3 Velocity { get; set; }
         public Vector3 Acceleration { get; private set; }       
 
-        public Animal(int health, float weight, Color color, Vector3 position, float maxSpeed, float minVelocityLimit, 
+        public Animal(int health, float weight, int diameter, Color color, Vector3 position, float maxSpeed, float minVelocityLimit, 
             float fleeDistanceLimit, float minFleeDistance, float steeringForceLimit) :
-            base(health, weight, color, position, maxSpeed)
+            base(health, weight,diameter, color, position, maxSpeed)
         {
             VelocityLimit = minVelocityLimit;
             SteeringForceLimit = steeringForceLimit;

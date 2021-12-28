@@ -14,7 +14,7 @@ namespace Steering_behaviours.Models
 
         readonly Dictionary<Direction, int> Directions = new Dictionary<Direction, int>(); //needed to be filled from mouse events in "Game"
 
-        public Hunter() : base(1, 1, Color.FromName("SlateBlue"), new Vector3(ran.Next(1, Field.Width - 1), ran.Next(1, Field.Height - 1), 0), 5)
+        public Hunter() : base(1, 1, 30, Color.FromName("SlateBlue"), new Vector3(ran.Next(1, Field.Width - 1), ran.Next(1, Field.Height - 1), 0), 5)
         {
             Bullets = new List<Bullet>();
             Directions.Add(Direction.Top, 0);

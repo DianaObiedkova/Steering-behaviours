@@ -55,8 +55,27 @@ namespace Steering_behaviours.Models
                 if (!isAlive)
                     Members.Remove(current);
             }
-           
-        }  
+
+            HarmByWolves();
+        } 
+        
+        public void HarmByWolves()
+        {
+            foreach(var member in Members)
+            {
+                if(!(member is Wolf) && member.IsAlive)
+                {
+                    foreach(var inner in Members)
+                    {
+                        if(inner is Wolf wolf && wolf.CanHarm(member))
+                        {
+                            member.Injure(wolf.harm);
+                        }
+                    }
+                }
+            }
+        }
+
         public void UpdatePositions() {
             foreach (var creature in Members)
             {

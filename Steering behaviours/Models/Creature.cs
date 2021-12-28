@@ -19,10 +19,10 @@ namespace Steering_behaviours.Models
         public static Random ran = new Random();
         public long Time { get; protected set; }
         public bool IsAlive => Health > 0;
-
-        public Creature(int health, float weight, Color color, Vector3 position, float maxSpeed)
+        public int Diameter { get; private set; }
+        public Creature(int health, float weight, int diameter, Color color, Vector3 position, float maxSpeed)
         {
-            Health = health; Weight = weight; Color = color; Position = position; MaxSpeed = maxSpeed;
+            Health = health; Weight = weight; Diameter = diameter; Color = color; Position = position; MaxSpeed = maxSpeed;
             ID = IDcounter;
             IDcounter++;
             Time = GetMils();
