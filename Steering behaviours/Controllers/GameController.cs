@@ -25,6 +25,7 @@ namespace Steering_behaviours.Controllers
         {
             Game = new Game();
             Game.StartGame(10, 3, 15);
+            ViewData["bullets"] = Game.Bullets;
             return View();
         }
         [HttpPost]

@@ -152,3 +152,12 @@ div .circle{
     top: 5px;
     /*transition: left .5s ease-in, top .5s ease-in;*/
 }
+
+
+div.wall_num {
+    display: inline;
+    vertical-align: middle;
+    width: 24px;
+    text-align: center;
+    font-weight:bold;
+}

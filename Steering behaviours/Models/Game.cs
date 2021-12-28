@@ -9,6 +9,7 @@ namespace Steering_behaviours.Models
     {
         private readonly Field field;
         public bool IsEnded { get; private set; }
+        public int Bullets => field.GetHunter().Gun.Bullets;
 
         public Game()
         {
@@ -68,7 +69,6 @@ namespace Steering_behaviours.Models
             float[] res = {player.Position.X, player.Position.Y};
             return res;
         }
-
         private void CheckGameEnd()
         {
             if (field.GetHunter().Health <= 0)

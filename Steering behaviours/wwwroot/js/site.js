@@ -78,3 +78,8 @@ function getPosition(el) {
 
 
 }
+
+function updateBullets(bullets) {
+    let num = document.getElementById("num");
+    num.innerHTML = bullets;
+}

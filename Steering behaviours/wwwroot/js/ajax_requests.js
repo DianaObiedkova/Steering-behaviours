@@ -23,7 +23,10 @@ function TakeShot(bullet, xPosition, yPosition) {
             "Y": yPosition//$(this).css("top")
         },
         success: function (response) {
-            alert("Bullets left: " + response);
+
+            updateBullets(response);
+
+            //alert("Bullets left: " + response);
 
             bullet.style.left = xPosition + "px";
             bullet.style.top = yPosition + "px";
