@@ -14,7 +14,7 @@ namespace Steering_behaviours.Models
         public readonly int harm = 1;
         private long lifetime;
 
-        public Wolf() : base(1, 1, 25, Color.FromName("SlateBlue"), new Vector3(ran.Next(1, Field.Width - 1), ran.Next(1, Field.Height - 1), 0), 20, 20, 75, 0, 10)
+        public Wolf() : base(1, 1, 25, Color.FromName("SlateBlue"), new Vector3(ran.Next(1, Field.Width - 1), ran.Next(1, Field.Height - 1), 0), 20, 15, 75, 0, 10)
         {
             lifetime = GetMils();
         }

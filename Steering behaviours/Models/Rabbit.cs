@@ -11,7 +11,7 @@ namespace Steering_behaviours.Models
 {
     public class Rabbit : Animal
     {
-        public Rabbit() : base(1, 1, 15, Color.FromName("SlateBlue"), new Vector3(ran.Next(1, Field.Width - 1), ran.Next(1, Field.Height - 1), 0), 30, 5, 50, 0, 2.5f)
+        public Rabbit() : base(1, 1, 15, Color.FromName("SlateBlue"), new Vector3(ran.Next(1, Field.Width - 1), ran.Next(1, Field.Height - 1), 0), 30, 25, 50, 0, 2.5f)
         {
 
         }

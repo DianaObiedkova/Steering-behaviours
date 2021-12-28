@@ -61,8 +61,9 @@ function GetPositions() {
             creatures.forEach(element => {
                 helper.insertAdjacentHTML('afterbegin', element.id + " " + element.x + " " + element.y + " " + element.creatureType + ", ");
                 createAnimal(element.id, element.x, element.y, element.creatureType);
+                //element.addEventListener("click", getClickPosition, false);
             });
-            addListeners();
+            //addListeners();
             //helper.insertAdjacentHTML('afterbegin', response.data);
         }
     });
@@ -119,7 +120,7 @@ function createAnimal(id,posX,posY,type){
             addClassWolf(animal);
             break;
     }
-    
+    animal.addEventListener("click", getClickPosition, false);
     field.appendChild(animal);
 }
 
