@@ -22,7 +22,7 @@ namespace Steering_behaviours.Models
 
         public List<Creature> GetCreatures()
         {
-            return Field.Members;
+            return Field.Members.Where(x=>x.IsAlive).ToList();
         }
 
         public void UpdateCreatures()
