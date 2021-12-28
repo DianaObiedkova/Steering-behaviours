@@ -118,7 +118,7 @@ div .circle{
 }
 
 .rabbit {
-    position: relative;
+    position: absolute;
     height: 15px;
     width: 15px;
     border-radius: 50%;
@@ -130,7 +130,7 @@ div .circle{
 }
 
 .doe {
-    position: relative;
+    position: absolute;
     height: 20px;
     width: 20px;
     border-radius: 50%;
@@ -142,7 +142,7 @@ div .circle{
 }
 
 .wolf {
-    position: relative;
+    position: absolute;
     height: 25px;
     width: 25px;
     border-radius: 50%;
