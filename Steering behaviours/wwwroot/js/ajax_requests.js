@@ -50,15 +50,16 @@ function GetPositions() {
         type: 'GET',
         success: function (response) {
             //alert(response);
+            creatures.forEach(element => {
+                if (document.getElementById(element.id) !== null) {
+                    removeAnimal(element.id);
+                } 
+            });
             creatures = response;
             let helper = document.getElementById("helper");
             helper.innerHTML = "";
             creatures.forEach(element => {
                 helper.insertAdjacentHTML('afterbegin', element.id + " " + element.x + " " + element.y + " " + element.creatureType + ", ");
-
-                if (document.getElementById(element.id) !== null) {
-                    removeAnimal(element.id);
-                }
                 createAnimal(element.id, element.x, element.y, element.creatureType);
             });
             //helper.insertAdjacentHTML('afterbegin', response.data);
