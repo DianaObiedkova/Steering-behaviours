@@ -56,7 +56,7 @@ namespace Steering_behaviours.Models
                     Members.Remove(current);
             }
 
-            HarmByWolves();
+            //HarmByWolves();
         } 
         
         public void HarmByWolves()
@@ -80,7 +80,15 @@ namespace Steering_behaviours.Models
             foreach (var creature in Members)
             {
                 creature.Update();
-            }            
+            }
+            HarmByWolves();
+            for (int i=0; i<Members.Count(); i++)
+            {
+                if(!Members.ElementAt(i).IsAlive) {
+                    Members.RemoveAt(i);
+                    i--;
+                }
+            }          
         }  
     }
 }
