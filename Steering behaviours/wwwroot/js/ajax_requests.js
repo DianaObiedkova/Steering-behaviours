@@ -1,11 +1,12 @@
 ﻿
 function MoveHunter() {
+
     $.ajax({
         url: '/Game/MoveHunter',
         type: 'POST',
         data: {
-            "X": hunter.getBoundingClientRect().left,//$(this).css("left"),
-            "Y": hunter.getBoundingClientRect().top//$(this).css("top")
+            "X": hunter.offsetLeft,//hunter.getBoundingClientRect().left,//$(this).css("left"),
+            "Y": hunter.offsetTop//hunter.getBoundingClientRect().top//$(this).css("top")
         },
         success: function (response) {
             //alert(response);

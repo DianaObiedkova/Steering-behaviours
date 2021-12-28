@@ -38,11 +38,11 @@ namespace Steering_behaviours.Models
         }
 
         //update hunter's direction
-        public void MoveHunter(int X, int Y)
+        public void MoveHunter(float X, float Y)
         {
             Hunter player = field.GetHunter();
-            int currX = (int)player.Position.X;
-            int currY = (int)player.Position.Y;
+            var currX = player.Position.X;
+            var currY = player.Position.Y;
             if ((currX - X) > 0)
             {
                 player.UpdateDirections(Direction.Left);

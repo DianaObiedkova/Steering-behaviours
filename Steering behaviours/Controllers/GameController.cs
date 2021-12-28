@@ -28,9 +28,12 @@ namespace Steering_behaviours.Controllers
             return View();
         }
         [HttpPost]
-        public void MoveHunter(int X, int Y)
+        public void MoveHunter(string X, string Y)
         {
-            Game.MoveHunter(X, Y);
+            if (float.TryParse(X.Replace('.', ','), out float fX) && float.TryParse(Y.Replace('.', ','), out float fY))
+            {
+                Game.MoveHunter(fX, fY);
+            }
         }
         [HttpGet]
         public IEnumerable<FrontCreature> GetMembersPositions()

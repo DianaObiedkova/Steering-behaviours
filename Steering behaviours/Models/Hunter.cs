@@ -78,7 +78,7 @@ namespace Steering_behaviours.Models
         public Direction GetCurrentDirection()
         {
             var counter = 0;
-            foreach (var pair in Directions)
+            foreach (var pair in Directions.ToList())
             {
                 if (pair.Value == 1)
                 {
